@@ -1,0 +1,9 @@
+#app {
+  color: #fff;
+  background-color: red;
+  font-size: 18px;
+  -webkit-transform: translate(-50%);
+     -moz-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+       -o-transform: translate(-50%);
+          transform: translate(-50%); }

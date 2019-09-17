@@ -1,0 +1,33 @@
+{
+    "name": "bovine-city-selector",
+    "version": "1.0.0",
+    "description": "基于JQuery的城市选择器",
+    "main": "./dist/index.js",
+    "directories": {
+        "example": "example"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BovineBoy/bovine-city-selector.git"
+    },
+    "author": "BovineBoy",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BovineBoy/bovine-city-selector/issues"
+    },
+    "homepage": "https://github.com/BovineBoy/bovine-city-selector#readme",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "gulp": "^4.0.2",
+        "gulp-babel": "^7.0.1",
+        "gulp-postcss": "^8.0.0",
+        "gulp-sass": "^4.0.2"
+    },
+    "dependencies": {
+        "babel-polyfill": "^6.26.0"
+    }
+}
