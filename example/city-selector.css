@@ -1,0 +1,25 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.app {
+  width: 500px;
+  height: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #4caf50;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px; }
+  .app .city-selector {
+    width: 100%;
+    height: 35px;
+    padding: 0 8px;
+    border: none;
+    outline: none;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px; }
