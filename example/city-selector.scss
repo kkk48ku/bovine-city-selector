@@ -130,7 +130,8 @@ $cusColor: #4caf50;
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     max-height: 280px;
-                    overflow-y: auto;
+                    overflow-y: scroll;
+                    -webkit-overflow-scrolling: touch;
                     overflow-x: hidden;
                     -ms-overflow-style: none;
                     overflow: -moz-scrollbars-none;
@@ -176,7 +177,24 @@ $cusColor: #4caf50;
                     display: none;
                 }
             }
+
+            .city-selector-error-tips {
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 150px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                z-index: 9;
+                border-radius: 4px;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+                font-size: 16px;
+                color: #fff;
+                background-color: rgba(0, 0, 0, .5);
+            }
         }
     }
-
 }
