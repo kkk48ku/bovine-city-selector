@@ -1,25 +1,122 @@
+@charset "UTF-8";
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
 
 .app {
   width: 500px;
   height: 700px;
   margin: 0 auto;
   padding: 20px;
-  background: #4caf50;
+  background-color: #4caf50;
   border: none;
   outline: none;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px; }
-  .app .city-selector {
-    width: 100%;
-    height: 35px;
-    padding: 0 8px;
-    border: none;
-    outline: none;
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px; }
+  .app div.city-selector-container {
+    position: relative; }
+    .app div.city-selector-container .city-selector {
+      width: 100%;
+      height: 35px;
+      padding: 0 8px;
+      border: none;
+      outline: none;
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px; }
+    .app div.city-selector-container .city-selector-body {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: #fff;
+      border: none;
+      outline: none;
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px;
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      .app div.city-selector-container .city-selector-body .city-selector-action {
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #d9d9d9; }
+        .app div.city-selector-container .city-selector-body .city-selector-action .city-selector-title {
+          text-align: center;
+          color: #666;
+          font-size: 15px;
+          font-weight: 400; }
+        .app div.city-selector-container .city-selector-body .city-selector-action .city-selector-btn {
+          position: absolute;
+          top: 0;
+          font-size: 14px;
+          letter-spacing: 1px;
+          cursor: pointer;
+          color: #4caf50; }
+        .app div.city-selector-container .city-selector-body .city-selector-action .city-selector-cancel {
+          left: 10px; }
+        .app div.city-selector-container .city-selector-body .city-selector-action .city-selector-confirm {
+          right: 10px; }
+      .app div.city-selector-container .city-selector-body .city-selector-tabs {
+        height: 40px;
+        line-height: 40px;
+        line-height: 36.5px;
+        border-bottom: 1px solid #d9d9d9; }
+        .app div.city-selector-container .city-selector-body .city-selector-tabs .city-selector-tab {
+          display: inline-block;
+          max-width: 33.33%;
+          margin: 0 10px;
+          font-size: 14px;
+          color: #333;
+          cursor: pointer; }
+          .app div.city-selector-container .city-selector-body .city-selector-tabs .city-selector-tab.active {
+            color: #4caf50;
+            border-bottom: 2px solid #4caf50; }
+      .app div.city-selector-container .city-selector-body .city-selector-panels::after, .app div.city-selector-container .city-selector-body .city-selector-panels::before {
+        content: "";
+        display: table; }
+      .app div.city-selector-container .city-selector-body .city-selector-panels::after {
+        clear: both;
+        zoom: 1; }
+      .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-panel {
+        float: left;
+        width: 50%;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        white-space: nowrap;
+        max-height: 280px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none; }
+        .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-panel::-webkit-scrollbar {
+          width: 0; }
+        .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a {
+          display: block;
+          padding-left: 15px;
+          font-size: 14px;
+          color: #787878;
+          border-bottom: 1px solid #f5f5f5;
+          cursor: pointer;
+          height: 40px;
+          line-height: 40px; }
+          .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a.active {
+            color: #4caf50;
+            position: relative; }
+            .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a.active::after {
+              content: "✔";
+              position: absolute;
+              right: 10px;
+              font-size: 20px; }
+      .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-city {
+        background: #f5f5f5; }
+        .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-city > a {
+          border-bottom: 1px solid #e9e9e9; }
+      .app div.city-selector-container .city-selector-body .city-selector-panels .city-selector-district {
+        display: none; }

@@ -22,19 +22,18 @@ const processors = [
 gulp.task("jsCompile", () => {
     // 定义入口文件
     return browserify({
-        entries: 'src/city-selector.js',
+        entries: 'src/index.js',
         debug: true
     })
         // 在bundle之前先转换es6，因为readabel stream 流没有transform方法
         .transform("babelify", { presets: ['es2015'] })
         // 转成node readabel stream流，拥有pipe方法（stream流分小片段传输）
         .bundle()
-        // .pipe(babel())
-        .on('error', function (error) {
-            console.log(error.toString())
-        })
+        // .on('error', function (error) {
+        //     console.log(error.toString())
+        // })
         // 转成gulp系的stream流，node系只有content，添加名字
-        .pipe(stream('city-selector.js'))
+        .pipe(stream('bundle.js'))
         // 转成二进制的流（二进制方式整体传输）
         .pipe(buffer())
         // 输出
