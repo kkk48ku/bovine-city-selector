@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible"
-              content="ie=edge" />
-        <title>Document</title>
-        <link rel="stylesheet"
-              href="./city-selector.css" />
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./city-selector.css" />
+</head>
 
-    <body>
-        <div class="app">
-            <div class="city-selector-container"
-                 id="city-selector-container">
-                <input type="text"
-                       data-type="city-selector"
-                       class="city-selector"
-                       id="city-selector"
-                       placeholder="请选择所在城市" />
-            </div>
+<body>
+    <div class="app">
+        <div class="city-selector-container" id="city-selector-container">
+            <input type="text" data-type="city-selector" class="city-selector" id="city-selector" placeholder="请选择所在城市" data-simple="true" />
         </div>
-        <script src="../dist/bundle.js"></script>
-    </body>
+    </div>
+    <script src="../dist/bundle.js"></script>
+</body>
 
 </html>

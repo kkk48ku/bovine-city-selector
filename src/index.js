@@ -13,5 +13,5 @@ const city = new citySelector(selector, {
         cancelBtn: "取消",
         confirmBtn: "确认"
     },
-    tabs: ["请选择省", "请选择市", "请选择区"]
+    tabs: ["请选择", "请选择", "请选择"]
 });
