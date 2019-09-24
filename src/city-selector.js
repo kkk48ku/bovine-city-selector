@@ -15,14 +15,16 @@ export default class citySelector {
             noDis: "请选择区域"
         }
     }) {
-        this.getParentEl(parentEl);
+        if (!this.getParentEl(parentEl)) return;
         this.cityData = cityData;
         this.els = {};
         this.actionName = actionName;
         this.tabs = tabs;
         this.data = defaultData;
         this.errorTips = errorTips;
-        this.currentIndex = (this.data.city && !this.data.district) ? 2 : 0;
+        if (!this.data.province) this.currentIndex = 0;
+        if (this.data.province && !this.data.city) this.currentIndex = 1;
+        if (this.data.city && !this.data.district) this.currentIndex = 2;
         this.init();
     }
     init() {
@@ -94,12 +96,16 @@ export default class citySelector {
         this.parentEl.setAttribute("onselectstart", "return false");
         // 防止直接输入
         this.els.citySelInput.setAttribute("readonly", "");
-        // 获取是否简易模式
+        // 使鼠标不为输入样式
+        this.els.citySelInput.style.cursor = "pointer";
+        // 是否简易模式
         this.simple = this.els.citySelInput.getAttribute("data-simple") || "false";
+        // 是否强制获取所有地址
+        this.force = this.els.citySelInput.getAttribute("data-force") || "false";
     }
     // 渲染省份选择
     renderPro() {
-        let parentNode = document.querySelector(".city-selector-province"),
+        let parentNode = this.parentEl.querySelector(".city-selector-province"),
             frag = document.createDocumentFragment(),
             aNode;
         for (const item in this.cityData) {
@@ -137,7 +143,7 @@ export default class citySelector {
     }
     // 渲染城市选择
     renderCity() {
-        let parentNode = document.querySelector(".city-selector-city"),
+        let parentNode = this.parentEl.querySelector(".city-selector-city"),
             frag = document.createDocumentFragment(),
             aNode, cityS;
         this._delAllNodes(parentNode);
@@ -178,7 +184,7 @@ export default class citySelector {
     }
     // 渲染区域选择
     renderDis() {
-        let parentNode = document.querySelector(".city-selector-district"),
+        let parentNode = this.parentEl.querySelector(".city-selector-district"),
             frag = document.createDocumentFragment(),
             aNode, districts;
         if (!this.cityData[this.data.province]) return;
@@ -264,29 +270,43 @@ export default class citySelector {
     }
     // 显示错误信息
     showErrorModel() {
-        this.els.errorTipModal.style.display = "block";
-        setTimeout(() => {
-            this.els.errorTipModal.style.display = "none";
-        }, 1500)
+        const show = () => {
+            this.els.errorTipModal.style.display = "block";
+            setTimeout(() => {
+                this.els.errorTipModal.style.display = "none";
+            }, 1500)
+        }
         if (!this.data.province) {
             this.els.errorTipModal.innerHTML = this.errorTips.noPro;
+            show();
             return false;
         }
         if (!this.data.city) {
             this.els.errorTipModal.innerHTML = this.errorTips.noCity;
+            show();
             return false;
         }
         if (!this.data.district) {
             this.els.errorTipModal.innerHTML = this.errorTips.noDis;
+            show();
             return false;
+        } else {
+            return true;
         }
     }
     // 绑定事件
     bindEvents() {
         const body = document.querySelector("body");
-        this.els.citySelConfirmBtn.addEventListener("click", () => {
+        const fillData = () => {
             this.fillData();
             if (this.confirm) this.confirm(this.data);
+        }
+        this.els.citySelConfirmBtn.addEventListener("click", () => {
+            if (this.force === "true" && this.showErrorModel()) {
+                fillData();
+            } else if (this.force === "false") {
+                fillData();
+            }
         })
         this.els.citySelCancelBtn.addEventListener("click", () => {
             if (this.cancel) this.cancel();
@@ -302,6 +322,7 @@ export default class citySelector {
         body.addEventListener("click", (e) => {
             const item = e.target;
             for (const ele in this.els) {
+                if (this.force === "true" && item === this.els.citySelConfirmBtn && !this.data.district) return;
                 if (item !== this.els[ele] &&
                     item !== this.els.citySelInput &&
                     item.className !== "active" &&
@@ -327,9 +348,15 @@ export default class citySelector {
     }
     // 获取父元素
     getParentEl(parentEl) {
-        this.parentEl = parentEl instanceof Node ?
-            parentEl :
-            document.querySelector(parentEl);
+        if (parentEl.length && parentEl.length > 1) {
+            console.error("传入的选择器应该是个唯一值")
+            return false;
+        } else {
+            this.parentEl = parentEl instanceof Node ?
+                parentEl :
+                document.querySelector(parentEl);
+            return true;
+        }
     }
     // 删除元素下素所有子节点
     _delAllNodes(ele) {
@@ -343,7 +370,7 @@ export default class citySelector {
             data.city = data.city.replace(/[市,地区,回族,蒙古,苗族,白族,傣族,景颇族,藏族,彝族,壮族,傈僳族,布依族,侗族]/g, "")
                 .replace("哈萨克", "")
                 .replace("自治州", "")
-                .replace(/自治县/, "");
+                .replace("自治县", "");
             data.district = data.district.length > 2 ? data.district.replace(/[市,区,县,旗]/g, "") : data.district;
         }
         if (data.province && data.city && data.district) {

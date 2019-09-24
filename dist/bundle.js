@@ -1,10 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports={
     "北京市": {
-        "市辖区": ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "门头沟区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云区", "延庆区"]
+        "北京市": ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "门头沟区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云区", "延庆区"]
     },
     "天津市": {
-        "市辖区": ["和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "东丽区", "西青区", "津南区", "北辰区", "武清区", "宝坻区", "滨海新区", "宁河区", "静海区", "蓟州区"]
+        "天津市": ["和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "东丽区", "西青区", "津南区", "北辰区", "武清区", "宝坻区", "滨海新区", "宁河区", "静海区", "蓟州区"]
     },
     "河北省": {
         "石家庄市": ["长安区", "桥西区", "新华区", "井陉矿区", "裕华区", "藁城区", "鹿泉区", "栾城区", "井陉县", "正定县", "行唐县", "灵寿县", "高邑县", "深泽县", "赞皇县", "无极县", "平山县", "元氏县", "赵县", "晋州市", "新乐市"],
@@ -90,7 +90,7 @@ module.exports={
         "大兴安岭地区": ["呼玛县", "塔河县", "漠河县"]
     },
     "上海市": {
-        "市辖区": ["黄浦区", "徐汇区", "长宁区", "静安区", "普陀区", "虹口区", "杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "奉贤区", "崇明区"]
+        "上海市": ["黄浦区", "徐汇区", "长宁区", "静安区", "普陀区", "虹口区", "杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "奉贤区", "崇明区"]
     },
     "江苏省": {
         "南京市": ["玄武区", "秦淮区", "建邺区", "鼓楼区", "浦口区", "栖霞区", "雨花台区", "江宁区", "六合区", "溧水区", "高淳区"],
@@ -274,14 +274,13 @@ module.exports={
     },
     "海南省": {
         "海口市": ["秀英区", "龙华区", "琼山区", "美兰区"],
-        "三亚市": ["市辖区", "海棠区", "吉阳区", "天涯区", "崖州区"],
+        "三亚市": ["三亚湾", "海棠区", "吉阳区", "天涯区", "崖州区"],
         "三沙市": ["西沙群岛", "南沙群岛", "中沙群岛的岛礁及其海域"],
         "儋州市": ["那大镇", "和庆镇", "南丰镇", "大成镇", "雅星镇", "兰洋镇", "光村镇", "木棠镇", "海头镇", "峨蔓镇", "三都镇", "王五镇", "白马井镇", "中和镇", "排浦镇", "东成镇", "新州镇", "国营西培农场", "国营西联农场", "国营蓝洋农场", "国营八一农场", "洋浦经济开发区", "华南热作学院"],
         "省直辖县级行政区划": ["五指山市", "琼海市", "文昌市", "万宁市", "东方市", "定安县", "屯昌县", "澄迈县", "临高县", "白沙黎族自治县", "昌江黎族自治县", "乐东黎族自治县", "陵水黎族自治县", "保亭黎族苗族自治县", "琼中黎族苗族自治县"]
     },
     "重庆市": {
-        "市辖区": ["万州区", "涪陵区", "渝中区", "大渡口区", "江北区", "沙坪坝区", "九龙坡区", "南岸区", "北碚区", "綦江区", "大足区", "渝北区", "巴南区", "黔江区", "长寿区", "江津区", "合川区", "永川区", "南川区", "璧山区", "铜梁区", "潼南区", "荣昌区", "开州区"],
-        "县": ["梁平县", "城口县", "丰都县", "垫江县", "武隆县", "忠县", "云阳县", "奉节县", "巫山县", "巫溪县", "石柱土家族自治县", "秀山土家族苗族自治县", "酉阳土家族苗族自治县", "彭水苗族土家族自治县"]
+        "重庆市": ["万州区", "涪陵区", "渝中区", "大渡口区", "江北区", "沙坪坝区", "九龙坡区", "南岸区", "北碚区", "綦江区", "大足区", "渝北区", "巴南区", "黔江区", "长寿区", "江津区", "合川区", "永川区", "南川区", "璧山区", "铜梁区", "潼南区", "荣昌区", "开州区", "梁平县", "城口县", "丰都县", "垫江县", "武隆县", "忠县", "云阳县", "奉节县", "巫山县", "巫溪县", "石柱土家族自治县", "秀山土家族苗族自治县", "酉阳土家族苗族自治县", "彭水苗族土家族自治县"]
     },
     "四川省": {
         "成都市": ["锦江区", "青羊区", "金牛区", "武侯区", "成华区", "龙泉驿区", "青白江区", "新都区", "温江区", "双流区", "金堂县", "郫县", "大邑县", "蒲江县", "新津县", "都江堰市", "彭州市", "邛崃市", "崇州市", "简阳市"],
@@ -407,6 +406,7 @@ module.exports={
         "自治区直辖县级行政区划": ["石河子市", "阿拉尔市", "图木舒克市", "五家渠市", "铁门关市"]
     }
 }
+
 },{}],2:[function(require,module,exports){
 "use strict";
 
@@ -445,14 +445,16 @@ var citySelector = function () {
 
         _classCallCheck(this, citySelector);
 
-        this.getParentEl(parentEl);
+        if (!this.getParentEl(parentEl)) return;
         this.cityData = _cityData2.default;
         this.els = {};
         this.actionName = actionName;
         this.tabs = tabs;
         this.data = defaultData;
         this.errorTips = errorTips;
-        this.currentIndex = this.data.city && !this.data.district ? 2 : 0;
+        if (!this.data.province) this.currentIndex = 0;
+        if (this.data.province && !this.data.city) this.currentIndex = 1;
+        if (this.data.city && !this.data.district) this.currentIndex = 2;
         this.init();
     }
 
@@ -508,8 +510,12 @@ var citySelector = function () {
             this.parentEl.setAttribute("onselectstart", "return false");
             // 防止直接输入
             this.els.citySelInput.setAttribute("readonly", "");
-            // 获取是否简易模式
+            // 使鼠标不为输入样式
+            this.els.citySelInput.style.cursor = "pointer";
+            // 是否简易模式
             this.simple = this.els.citySelInput.getAttribute("data-simple") || "false";
+            // 是否强制获取所有地址
+            this.force = this.els.citySelInput.getAttribute("data-force") || "false";
         }
         // 渲染省份选择
 
@@ -518,7 +524,7 @@ var citySelector = function () {
         value: function renderPro() {
             var _this = this;
 
-            var parentNode = document.querySelector(".city-selector-province"),
+            var parentNode = this.parentEl.querySelector(".city-selector-province"),
                 frag = document.createDocumentFragment(),
                 aNode = void 0;
             for (var item in this.cityData) {
@@ -560,7 +566,7 @@ var citySelector = function () {
         value: function renderCity() {
             var _this2 = this;
 
-            var parentNode = document.querySelector(".city-selector-city"),
+            var parentNode = this.parentEl.querySelector(".city-selector-city"),
                 frag = document.createDocumentFragment(),
                 aNode = void 0,
                 cityS = void 0;
@@ -606,7 +612,7 @@ var citySelector = function () {
         value: function renderDis() {
             var _this3 = this;
 
-            var parentNode = document.querySelector(".city-selector-district"),
+            var parentNode = this.parentEl.querySelector(".city-selector-district"),
                 frag = document.createDocumentFragment(),
                 aNode = void 0,
                 districts = void 0;
@@ -709,21 +715,28 @@ var citySelector = function () {
         value: function showErrorModel() {
             var _this5 = this;
 
-            this.els.errorTipModal.style.display = "block";
-            setTimeout(function () {
-                _this5.els.errorTipModal.style.display = "none";
-            }, 1500);
+            var show = function show() {
+                _this5.els.errorTipModal.style.display = "block";
+                setTimeout(function () {
+                    _this5.els.errorTipModal.style.display = "none";
+                }, 1500);
+            };
             if (!this.data.province) {
                 this.els.errorTipModal.innerHTML = this.errorTips.noPro;
+                show();
                 return false;
             }
             if (!this.data.city) {
                 this.els.errorTipModal.innerHTML = this.errorTips.noCity;
+                show();
                 return false;
             }
             if (!this.data.district) {
                 this.els.errorTipModal.innerHTML = this.errorTips.noDis;
+                show();
                 return false;
+            } else {
+                return true;
             }
         }
         // 绑定事件
@@ -734,9 +747,16 @@ var citySelector = function () {
             var _this6 = this;
 
             var body = document.querySelector("body");
-            this.els.citySelConfirmBtn.addEventListener("click", function () {
+            var fillData = function fillData() {
                 _this6.fillData();
                 if (_this6.confirm) _this6.confirm(_this6.data);
+            };
+            this.els.citySelConfirmBtn.addEventListener("click", function () {
+                if (_this6.force === "true" && _this6.showErrorModel()) {
+                    fillData();
+                } else if (_this6.force === "false") {
+                    fillData();
+                }
             });
             this.els.citySelCancelBtn.addEventListener("click", function () {
                 if (_this6.cancel) _this6.cancel();
@@ -752,6 +772,7 @@ var citySelector = function () {
             body.addEventListener("click", function (e) {
                 var item = e.target;
                 for (var ele in _this6.els) {
+                    if (_this6.force === "true" && item === _this6.els.citySelConfirmBtn && !_this6.data.district) return;
                     if (item !== _this6.els[ele] && item !== _this6.els.citySelInput && item.className !== "active" && item.className !== "city-selector-title" && item.className !== "city-selector-tabs" && item.className !== "city-selector-tab" && item.className !== "city-selector-tab active" && item.className !== "city-selector-panels") {
                         _this6.els.citySelBody.style.display = "none";
                     }
@@ -777,7 +798,13 @@ var citySelector = function () {
     }, {
         key: "getParentEl",
         value: function getParentEl(parentEl) {
-            this.parentEl = parentEl instanceof Node ? parentEl : document.querySelector(parentEl);
+            if (parentEl.length && parentEl.length > 1) {
+                console.error("传入的选择器应该是个唯一值");
+                return false;
+            } else {
+                this.parentEl = parentEl instanceof Node ? parentEl : document.querySelector(parentEl);
+                return true;
+            }
         }
         // 删除元素下素所有子节点
 
@@ -793,7 +820,7 @@ var citySelector = function () {
             var data = JSON.parse(JSON.stringify(this.data));
             if (this.simple === "true") {
                 data.province = data.province.replace(/[省,市,自治区,壮族,回族,维吾尔]/g, "");
-                data.city = data.city.replace(/[市,地区,回族,蒙古,苗族,白族,傣族,景颇族,藏族,彝族,壮族,傈僳族,布依族,侗族]/g, "").replace("哈萨克", "").replace("自治州", "").replace(/自治县/, "");
+                data.city = data.city.replace(/[市,地区,回族,蒙古,苗族,白族,傣族,景颇族,藏族,彝族,壮族,傈僳族,布依族,侗族]/g, "").replace("哈萨克", "").replace("自治州", "").replace("自治县", "");
                 data.district = data.district.length > 2 ? data.district.replace(/[市,区,县,旗]/g, "") : data.district;
             }
             if (data.province && data.city && data.district) {
@@ -822,9 +849,9 @@ var _citySelector2 = _interopRequireDefault(_citySelector);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var selector = document.querySelector("#city-selector-container");
+var citySelOne = document.getElementsByClassName("city-selector-container")[0];
 
-var city = new _citySelector2.default(selector, {
+var cityPickerOne = new _citySelector2.default(citySelOne, {
     defaultData: {
         province: "",
         city: "",
@@ -838,21 +865,59 @@ var city = new _citySelector2.default(selector, {
     tabs: ["请选择", "请选择", "请选择"]
 });
 
-city.confirm = function (data) {
+cityPickerOne.confirm = function (data) {
     console.log(data);
-    var citySelector = document.getElementById("city-selector");
     if (data.province && data.city && data.district) {
-        citySelector.value = data.province + " / " + data.city + " / " + data.district;
+        citySelOne.value = data.province + " / " + data.city + " / " + data.district;
     } else if (data.province && data.city && !data.district) {
-        citySelector.value = data.province + " / " + data.city;
+        citySelOne.value = data.province + " / " + data.city;
     } else if (data.province && !data.city && !data.district) {
-        citySelector.value = "" + data.province;
+        citySelOne.value = "" + data.province;
     } else {
-        citySelector.value = "";
+        citySelOne.value = "";
     }
-    console.log(citySelector.value);
+    console.log(citySelOne.value);
 };
-city.cancel = function () {
+
+cityPickerOne.cancel = function () {
+    console.log("用户取消了选择位置");
+};
+
+var citySelTwo = document.getElementsByClassName("city-selector-container")[1];
+
+var cityPickerTwo = new _citySelector2.default(citySelTwo, {
+    defaultData: {
+        province: "广东省",
+        city: "深圳市",
+        district: ""
+    },
+    actionName: {
+        title: "Where are you from?",
+        cancelBtn: "Cancel",
+        confirmBtn: "OK"
+    },
+    tabs: ["快选", "快选", "快选"],
+    errorTips: {
+        noPro: "愣着干嘛，快选省份啊！",
+        noCity: "愣着干嘛，快选城市啊！",
+        noDis: "愣着干嘛，快选区域啊！"
+    }
+});
+
+cityPickerTwo.confirm = function (data) {
+    console.log(data);
+    if (data.province && data.city && data.district) {
+        citySelTwo.value = data.province + " / " + data.city + " / " + data.district;
+    } else if (data.province && data.city && !data.district) {
+        citySelTwo.value = data.province + " / " + data.city;
+    } else if (data.province && !data.city && !data.district) {
+        citySelTwo.value = "" + data.province;
+    } else {
+        citySelTwo.value = "";
+    }
+    console.log(citySelTwo.value);
+};
+cityPickerTwo.cancel = function () {
     console.log("用户取消了选择位置");
 };
 
