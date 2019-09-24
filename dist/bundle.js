@@ -511,7 +511,7 @@ var citySelector = function () {
             // 防止直接输入
             this.els.citySelInput.setAttribute("readonly", "");
             // 使鼠标不为输入样式
-            this.els.citySelInput.style.cursor = "pointer";
+            // this.els.citySelInput.style.cursor = "pointer";
             // 是否简易模式
             this.simple = this.els.citySelInput.getAttribute("data-simple") || "false";
             // 是否强制获取所有地址

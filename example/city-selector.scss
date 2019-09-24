@@ -46,6 +46,7 @@ $cusColor: #4caf50;
             width: 100%;
             height: 35px;
             padding: 0 8px;
+            cursor: pointer;
             @include changeBorder;
         }
 
