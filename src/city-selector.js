@@ -2,7 +2,7 @@ import cityData from "./city-data.json";
 
 export default class citySelector {
     constructor(parentEl, {
-        defaultData = {},
+        defaultData,
         actionName = {
             title: "请选择地区",
             cancelBtn: "取消",
@@ -10,6 +10,23 @@ export default class citySelector {
         },
         tabs = ["请选择", "请选择", "请选择"],
         errorTips = {
+            noPro: "请选择省份",
+            noCity: "请选择城市",
+            noDis: "请选择区域"
+        }
+    } = {
+        defaultData: {
+            province: "",
+            city: "",
+            district: ""
+        },
+        actionName: {
+            title: "请选择地区",
+            cancelBtn: "取消",
+            confirmBtn: "确认"
+        },
+        tabs: ["请选择", "请选择", "请选择"],
+        errorTips: {
             noPro: "请选择省份",
             noCity: "请选择城市",
             noDis: "请选择区域"
@@ -24,7 +41,9 @@ export default class citySelector {
         this.errorTips = errorTips;
         if (!this.data.province) this.currentIndex = 0;
         if (this.data.province && !this.data.city) this.currentIndex = 1;
-        if (this.data.city && !this.data.district) this.currentIndex = 2;
+        if ((this.data.city && !this.data.district) || this.data.district) {
+            this.currentIndex = 2;
+        }
         this.init();
     }
     init() {

@@ -1,50 +1,55 @@
 import citySelector from "./city-selector";
 
+// 无默认值
 const citySelOne = document.getElementsByClassName("city-selector-container")[0];
 
-const cityPickerOne = new citySelector(citySelOne, {
-    defaultData: {
-        province: "",
-        city: "",
-        district: ""
-    },
-    actionName: {
-        title: "请选择地区",
-        cancelBtn: "取消",
-        confirmBtn: "确认"
-    },
-    tabs: ["请选择", "请选择", "请选择"]
-});
+const cityPickerOne = new citySelector(citySelOne);
 
-cityPickerOne.confirm = (data) => {
-    console.log(data)
-    if (data.province && data.city && data.district) {
-        citySelOne.value = `${data.province} / ${data.city} / ${data.district}`;
-    } else if (data.province && data.city && !data.district) {
-        citySelOne.value = `${data.province} / ${data.city}`;
-    } else if (data.province && !data.city && !data.district) {
-        citySelOne.value = `${data.province}`;
-    } else {
-        citySelOne.value = ``;
-    }
-    console.log(citySelOne.value)
-}
-
-cityPickerOne.cancel = () => {
-    console.log("用户取消了选择位置")
-}
-
+// 有默认值
 const citySelTwo = document.getElementsByClassName("city-selector-container")[1];
 
 const cityPickerTwo = new citySelector(citySelTwo, {
     defaultData: {
         province: "广东省",
         city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+const citySelThree = document.getElementsByClassName("city-selector-container")[2];
+
+const cityPickerThree = new citySelector(citySelThree, {
+    defaultData: {
+        province: "广东省",
+        city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+const citySelFour = document.getElementsByClassName("city-selector-container")[3];
+
+const cityPickerFour = new citySelector(citySelFour, {
+    defaultData: {
+        province: "",
+        city: "",
+        district: ""
+    }
+});
+//自定义其它选项 
+const citySelFive = document.getElementsByClassName("city-selector-container")[4],
+    citySelInputFive = document.getElementsByClassName("city-selector-input")[4];
+
+const cityPickerFive = new citySelector(citySelFive, {
+    defaultData: {
+        province: "广东省",
+        city: "",
         district: ""
     },
     actionName: {
-        title: "Where are you from?",
-        cancelBtn: "Cancel",
+        title: "你从哪来?",
+        cancelBtn: "NO",
         confirmBtn: "OK"
     },
     tabs: ["快选", "快选", "快选"],
@@ -55,19 +60,14 @@ const cityPickerTwo = new citySelector(citySelTwo, {
     }
 });
 
-cityPickerTwo.confirm = (data) => {
-    console.log(data)
+cityPickerFive.confirm = (data) => {
     if (data.province && data.city && data.district) {
-        citySelTwo.value = `${data.province} / ${data.city} / ${data.district}`;
+        citySelInputFive.value = `${data.province} / ${data.city} / ${data.district}`;
     } else if (data.province && data.city && !data.district) {
-        citySelTwo.value = `${data.province} / ${data.city}`;
+        citySelInputFive.value = `${data.province} / ${data.city}`;
     } else if (data.province && !data.city && !data.district) {
-        citySelTwo.value = `${data.province}`;
+        citySelInputFive.value = `${data.province}`;
     } else {
-        citySelTwo.value = ``;
+        citySelInputFive.value = ``;
     }
-    console.log(citySelTwo.value)
-}
-cityPickerTwo.cancel = () => {
-    console.log("用户取消了选择位置")
 }

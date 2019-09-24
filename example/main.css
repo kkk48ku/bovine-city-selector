@@ -1,7 +1,52 @@
-.app {
-    /* background: #409EFF; */
+body {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(135deg, #a8e6cf, #ffd3b6);
 }
 
-.city-selector-container {
+.github,
+.app {
+    width: 500px;
+
+}
+
+.github {
+    display: block;
+    padding: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.app {
+    margin: 150px auto;
+}
+
+.city-selector .type {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #333;
+}
+
+.city-selector .city-selector-container {
     margin-bottom: 10px;
+}
+
+
+@media screen and (max-width:768px) {
+
+    .github,
+    .app {
+        width: 100%;
+    }
+
+    .github {
+        padding: 30px 0 20px 0;
+    }
+
+    .app {
+        padding: 20px;
+        margin: 0 auto;
+    }
 }

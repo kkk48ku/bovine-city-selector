@@ -425,9 +425,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var citySelector = function () {
-    function citySelector(parentEl, _ref) {
-        var _ref$defaultData = _ref.defaultData,
-            defaultData = _ref$defaultData === undefined ? {} : _ref$defaultData,
+    function citySelector(parentEl) {
+        var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+            defaultData: {
+                province: "",
+                city: "",
+                district: ""
+            },
+            actionName: {
+                title: "请选择地区",
+                cancelBtn: "取消",
+                confirmBtn: "确认"
+            },
+            tabs: ["请选择", "请选择", "请选择"],
+            errorTips: {
+                noPro: "请选择省份",
+                noCity: "请选择城市",
+                noDis: "请选择区域"
+            }
+        },
+            defaultData = _ref.defaultData,
             _ref$actionName = _ref.actionName,
             actionName = _ref$actionName === undefined ? {
             title: "请选择地区",
@@ -454,7 +471,9 @@ var citySelector = function () {
         this.errorTips = errorTips;
         if (!this.data.province) this.currentIndex = 0;
         if (this.data.province && !this.data.city) this.currentIndex = 1;
-        if (this.data.city && !this.data.district) this.currentIndex = 2;
+        if (this.data.city && !this.data.district || this.data.district) {
+            this.currentIndex = 2;
+        }
         this.init();
     }
 
@@ -849,51 +868,56 @@ var _citySelector2 = _interopRequireDefault(_citySelector);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// 无默认值
 var citySelOne = document.getElementsByClassName("city-selector-container")[0];
 
-var cityPickerOne = new _citySelector2.default(citySelOne, {
-    defaultData: {
-        province: "",
-        city: "",
-        district: ""
-    },
-    actionName: {
-        title: "请选择地区",
-        cancelBtn: "取消",
-        confirmBtn: "确认"
-    },
-    tabs: ["请选择", "请选择", "请选择"]
-});
+var cityPickerOne = new _citySelector2.default(citySelOne);
 
-cityPickerOne.confirm = function (data) {
-    console.log(data);
-    if (data.province && data.city && data.district) {
-        citySelOne.value = data.province + " / " + data.city + " / " + data.district;
-    } else if (data.province && data.city && !data.district) {
-        citySelOne.value = data.province + " / " + data.city;
-    } else if (data.province && !data.city && !data.district) {
-        citySelOne.value = "" + data.province;
-    } else {
-        citySelOne.value = "";
-    }
-    console.log(citySelOne.value);
-};
-
-cityPickerOne.cancel = function () {
-    console.log("用户取消了选择位置");
-};
-
+// 有默认值
 var citySelTwo = document.getElementsByClassName("city-selector-container")[1];
 
 var cityPickerTwo = new _citySelector2.default(citySelTwo, {
     defaultData: {
         province: "广东省",
         city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+var citySelThree = document.getElementsByClassName("city-selector-container")[2];
+
+var cityPickerThree = new _citySelector2.default(citySelThree, {
+    defaultData: {
+        province: "广东省",
+        city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+var citySelFour = document.getElementsByClassName("city-selector-container")[3];
+
+var cityPickerFour = new _citySelector2.default(citySelFour, {
+    defaultData: {
+        province: "",
+        city: "",
+        district: ""
+    }
+});
+//自定义其它选项 
+var citySelFive = document.getElementsByClassName("city-selector-container")[4],
+    citySelInputFive = document.getElementsByClassName("city-selector-input")[4];
+
+var cityPickerFive = new _citySelector2.default(citySelFive, {
+    defaultData: {
+        province: "广东省",
+        city: "",
         district: ""
     },
     actionName: {
-        title: "Where are you from?",
-        cancelBtn: "Cancel",
+        title: "你从哪来?",
+        cancelBtn: "NO",
         confirmBtn: "OK"
     },
     tabs: ["快选", "快选", "快选"],
@@ -904,21 +928,16 @@ var cityPickerTwo = new _citySelector2.default(citySelTwo, {
     }
 });
 
-cityPickerTwo.confirm = function (data) {
-    console.log(data);
+cityPickerFive.confirm = function (data) {
     if (data.province && data.city && data.district) {
-        citySelTwo.value = data.province + " / " + data.city + " / " + data.district;
+        citySelInputFive.value = data.province + " / " + data.city + " / " + data.district;
     } else if (data.province && data.city && !data.district) {
-        citySelTwo.value = data.province + " / " + data.city;
+        citySelInputFive.value = data.province + " / " + data.city;
     } else if (data.province && !data.city && !data.district) {
-        citySelTwo.value = "" + data.province;
+        citySelInputFive.value = "" + data.province;
     } else {
-        citySelTwo.value = "";
+        citySelInputFive.value = "";
     }
-    console.log(citySelTwo.value);
-};
-cityPickerTwo.cancel = function () {
-    console.log("用户取消了选择位置");
 };
 
 },{"./city-selector":2}]},{},[3]);
