@@ -68,6 +68,8 @@ $cusColor: #4caf50;
                 @include borderBottom;
 
                 & .city-selector-title {
+                    width: 77%;
+                    margin: 0 auto;
                     text-align: center;
                     color: #666;
                     font-size: 15px;
@@ -75,25 +77,27 @@ $cusColor: #4caf50;
                 }
 
                 & .city-selector-btn {
+                    width: 11.5%;
                     position: absolute;
                     top: 0;
                     font-size: 14px;
+                    text-align: center;
                     letter-spacing: 1px;
                     cursor: pointer;
                     color: $cusColor;
                 }
 
                 & .city-selector-cancel {
-                    left: 10px;
+                    left: 0;
                 }
 
                 & .city-selector-confirm {
-                    right: 10px;
+                    right: 0;
                 }
             }
 
             .city-selector-tabs {
-                @include changeHeight;
+                height: 40px;
                 line-height: 38px;
                 @include borderBottom;
 
@@ -207,7 +211,30 @@ $cusColor: #4caf50;
 }
 
 @media screen and (max-width:786px) {
+
+    body {
+        // 解决移动端body无法点击的问题
+        cursor: pointer;
+    }
+
     .app {
         width: 100%;
+
+        .city-selector-container {
+            .city-selector-body {
+                .city-selector-action {
+                    .city-selector-title {
+                        width: 70%;
+                    }
+
+                    .city-selector-btn {
+                        width: 15%;
+                    }
+                }
+            }
+        }
+
     }
 }
+
+@media screen and (max-width:380px) {}

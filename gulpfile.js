@@ -1,8 +1,12 @@
 require("babel-polyfill");
 const gulp = require("gulp"),
+    // 转换scss文件
     sass = require("gulp-sass"),
+    // 处理css文件
     postcss = require("gulp-postcss"),
+    // 使css兼容低版本浏览器
     autoprefixer = require("autoprefixer"),
+    // 使JS文件可以模块化开发
     browserify = require('browserify'),
     // 转成stream流，gulp系
     stream = require('vinyl-source-stream'),
@@ -11,6 +15,7 @@ const gulp = require("gulp"),
 
 const processors = [
     autoprefixer({
+        // 兼容更低版本的浏览器
         overrideBrowserslist: ["last 0 versions", "> 5%"],
         cascade: true, //是否美化属性值 默认：true 像这样：
         //-webkit-transform: rotate(45deg);
@@ -22,13 +27,15 @@ const processors = [
 gulp.task("jsCompile", () => {
     // 定义入口文件
     return browserify({
-        entries: 'src/index.js',
-        debug: true
-    })
+            entries: 'src/index.js'
+            // 开启后在打包的文件后有sourceMap(会使打包文件体积较大)
+            // debug: true
+        })
         // 在bundle之前先转换es6，因为readabel stream 流没有transform方法
         .transform("babelify", { presets: ['es2015'] })
         // 转成node readabel stream流，拥有pipe方法（stream流分小片段传输）
         .bundle()
+        // 关闭后保存报错可以自动重启
         // .on('error', function (error) {
         //     console.log(error.toString())
         // })
@@ -48,7 +55,7 @@ gulp.task("sass", () => {
         .pipe(gulp.dest("./example"));
 });
 
-gulp.task("main", function () {
+gulp.task("main", function() {
     gulp.watch(["./src/*.js"], gulp.series("jsCompile"));
     gulp.watch(["./example/*.scss"], gulp.series("sass"));
 });

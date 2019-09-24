@@ -54,24 +54,27 @@
         line-height: 40px;
         border-bottom: 1px solid #d9d9d9; }
         .app .city-selector-container .city-selector-body .city-selector-action .city-selector-title {
+          width: 77%;
+          margin: 0 auto;
           text-align: center;
           color: #666;
           font-size: 15px;
           font-weight: 400; }
         .app .city-selector-container .city-selector-body .city-selector-action .city-selector-btn {
+          width: 11.5%;
           position: absolute;
           top: 0;
           font-size: 14px;
+          text-align: center;
           letter-spacing: 1px;
           cursor: pointer;
           color: #4caf50; }
         .app .city-selector-container .city-selector-body .city-selector-action .city-selector-cancel {
-          left: 10px; }
+          left: 0; }
         .app .city-selector-container .city-selector-body .city-selector-action .city-selector-confirm {
-          right: 10px; }
+          right: 0; }
       .app .city-selector-container .city-selector-body .city-selector-tabs {
         height: 40px;
-        line-height: 40px;
         line-height: 38px;
         border-bottom: 1px solid #d9d9d9; }
         .app .city-selector-container .city-selector-body .city-selector-tabs .city-selector-tab {
@@ -158,5 +161,11 @@
         background-color: rgba(0, 0, 0, 0.5); }
 
 @media screen and (max-width: 786px) {
+  body {
+    cursor: pointer; }
   .app {
-    width: 100%; } }
+    width: 100%; }
+    .app .city-selector-container .city-selector-body .city-selector-action .city-selector-title {
+      width: 70%; }
+    .app .city-selector-container .city-selector-body .city-selector-action .city-selector-btn {
+      width: 15%; } }

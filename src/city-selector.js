@@ -227,13 +227,10 @@ export default class citySelector {
     }
     bindTabEvent() {
         this.els.citySelTabs[0].addEventListener("click", (e) => {
-            e.stopPropagation();
             this.currentIndex = 0;
             this.activeTab();
         })
         this.els.citySelTabs[1].addEventListener("click", (e) => {
-            e.stopPropagation();
-            e.preventDefault();
             if (!this.data.province) {
                 this.showErrorModel()
             } else {
@@ -242,7 +239,6 @@ export default class citySelector {
             }
         })
         this.els.citySelTabs[2].addEventListener("click", (e) => {
-            e.stopPropagation();
             if (!this.data.city) {
                 this.showErrorModel()
             } else {
@@ -287,16 +283,30 @@ export default class citySelector {
     }
     // 绑定事件
     bindEvents() {
+        const body = document.querySelector("body");
         this.els.citySelConfirmBtn.addEventListener("click", () => {
             this.fillData();
-            document.querySelector(".city-selector-body").style.display = "none";
+            if (this.confirm) this.confirm(this.data);
         })
-        this.els.citySelCancelBtn.addEventListener("click", () => {
-            document.querySelector(".city-selector-body").style.display = "none";
-        })
-        document.getElementById("city-selector").addEventListener("click", () => {
-            document.querySelector(".city-selector-body").style.display = "block";
+        this.els.citySelInput.addEventListener("click", () => {
+            if (this.els.citySelBody.style.display === "block") {
+                this.els.citySelBody.style.display = "none";
+            } else {
+                this.els.citySelBody.style.display = "block";
+            }
             this.activeAction();
+        })
+        body.addEventListener("click", (e) => {
+            const item = e.target;
+            for (const ele in this.els) {
+                if (item !== this.els[ele] &&
+                    item !== this.els.citySelInput &&
+                    item.className !== "active" &&
+                    item.className !== "city-selector-title" &&
+                    item.className !== "city-selector-tabs") {
+                    this.els.citySelBody.style.display = "none";
+                }
+            }
         })
     }
     // 创建元素
@@ -320,16 +330,16 @@ export default class citySelector {
         ele.innerHTML = "";
     }
     fillData() {
-        let data = this.data;
-        // if (this.simple === "true") {
-        //     data.province = data.province.replace(/[省,市,自治区,壮族,回族,维吾尔]/g, "");
-        //     data.city = data.city.replace(/[市,地区,回族,蒙古,苗族,白族,傣族,景颇族,藏族,彝族,壮族,傈僳族,布依族,侗族]/g, "")
-        //         .replace("哈萨克", "")
-        //         .replace("自治州", "")
-        //         .replace(/自治县/, "");
-        //     data.district = data.district.length > 2 ? data.district.replace(/[市,区,县,旗]/g, "") : data.district;
-        // }
-        // console.log(`简易数据：${data.province || "未选择"} - ${data.city || "未选择"} - ${data.district || "未选择"}`)
+        // 使用深刻拷贝防止获取完整数据被污染
+        let data = JSON.parse(JSON.stringify(this.data));
+        if (this.simple === "true") {
+            data.province = data.province.replace(/[省,市,自治区,壮族,回族,维吾尔]/g, "");
+            data.city = data.city.replace(/[市,地区,回族,蒙古,苗族,白族,傣族,景颇族,藏族,彝族,壮族,傈僳族,布依族,侗族]/g, "")
+                .replace("哈萨克", "")
+                .replace("自治州", "")
+                .replace(/自治县/, "");
+            data.district = data.district.length > 2 ? data.district.replace(/[市,区,县,旗]/g, "") : data.district;
+        }
         if (data.province && data.city && data.district) {
             this.els.citySelInput.value = `${data.province} - ${data.city} - ${data.district}`;
         } else if (data.province && data.city && !data.district) {
@@ -339,6 +349,5 @@ export default class citySelector {
         } else {
             this.els.citySelInput.value = ``;
         }
-
     }
 }
