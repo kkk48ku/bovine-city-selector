@@ -2,7 +2,7 @@
     "name": "bovine-city-selector",
     "version": "1.0.0",
     "description": "无依赖的城市选择器",
-    "main": "./dist/bundle.js",
+    "main": "./dist/city-selector.js",
     "directories": {
         "example": "example"
     },
@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/BovineBoy/bovine-city-selector#readme",
     "devDependencies": {
+        "autoprefixer": "^9.6.1",
         "babel-core": "^6.26.3",
         "babel-preset-env": "^1.7.0",
         "babel-preset-es2015": "^6.24.1",
@@ -28,6 +29,7 @@
         "gulp": "^4.0.2",
         "gulp-postcss": "^8.0.0",
         "gulp-sass": "^4.0.2",
+        "gulp-uglify": "^3.0.2",
         "vinyl-buffer": "^1.0.1",
         "vinyl-source-stream": "^2.0.0"
     },

@@ -6,12 +6,16 @@ const gulp = require("gulp"),
     postcss = require("gulp-postcss"),
     // 使css兼容低版本浏览器
     autoprefixer = require("autoprefixer"),
+    // 转换es6
+    babelify = require("babelify"),
     // 使JS文件可以模块化开发
     browserify = require('browserify'),
     // 转成stream流，gulp系
     stream = require('vinyl-source-stream'),
     // 转成二进制流，gulp系
-    buffer = require('vinyl-buffer');
+    buffer = require('vinyl-buffer'),
+    // 压缩打包最终的文件
+    uglify = require("gulp-uglify");
 
 const processors = [
     autoprefixer({
@@ -23,6 +27,11 @@ const processors = [
         remove: true //是否去掉不必要的前缀 默认：true
     })
 ];
+
+gulp.task("main", function() {
+    gulp.watch(["./src/*.js"], gulp.series("jsCompile"));
+    gulp.watch(["./src/*.scss"], gulp.series("sass"));
+});
 
 gulp.task("jsCompile", () => {
     // 定义入口文件
@@ -44,7 +53,7 @@ gulp.task("jsCompile", () => {
         // 转成二进制的流（二进制方式整体传输）
         .pipe(buffer())
         // 输出
-        .pipe(gulp.dest('dist/'))
+        .pipe(gulp.dest('example/'))
 });
 
 gulp.task("sass", () => {
@@ -56,7 +65,26 @@ gulp.task("sass", () => {
         .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("main", function() {
-    gulp.watch(["./src/*.js"], gulp.series("jsCompile"));
-    gulp.watch(["./src/*.scss"], gulp.series("sass"));
-});
+gulp.task("build", () => {
+    // 定义入口文件
+    return browserify({
+            entries: 'src/city-selector.js'
+            // 开启后在打包的文件后有sourceMap(会使打包文件体积较大)
+            // debug: true
+        })
+        // 在bundle之前先转换es6，因为readabel stream 流没有transform方法
+        .transform("babelify", { presets: ['es2015'] })
+        // 转成node readabel stream流，拥有pipe方法（stream流分小片段传输）
+        .bundle()
+        // 关闭后保存报错可以自动重启
+        // .on('error', function (error) {
+        //     console.log(error.toString())
+        // })
+        // 转成gulp系的stream流，node系只有content，添加名字
+        .pipe(stream('city-selector.js'))
+        // 转成二进制的流（二进制方式整体传输）
+        .pipe(buffer())
+        .pipe(uglify({ ie8: true, toplevel: true }))
+        // 输出
+        .pipe(gulp.dest('dist/'))
+})
