@@ -1,0 +1,171 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+.app {
+  width: 500px;
+  height: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #4caf50;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px; }
+  .app .city-selector-container {
+    position: relative; }
+    .app .city-selector-container .city-selector-input {
+      width: 100%;
+      height: 35px;
+      padding: 0 8px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px; }
+    .app .city-selector-container .city-selector-body {
+      display: none;
+      position: absolute;
+      top: 36px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 9;
+      background: #fff;
+      border: none;
+      outline: none;
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px;
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out; }
+      .app .city-selector-container .city-selector-body .city-selector-action {
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #d9d9d9; }
+        .app .city-selector-container .city-selector-body .city-selector-action .city-selector-title {
+          width: 77%;
+          margin: 0 auto;
+          text-align: center;
+          color: #666;
+          font-size: 15px;
+          font-weight: 400; }
+        .app .city-selector-container .city-selector-body .city-selector-action .city-selector-btn {
+          width: 11.5%;
+          position: absolute;
+          top: 0;
+          font-size: 14px;
+          text-align: center;
+          letter-spacing: 1px;
+          cursor: pointer;
+          color: #4caf50; }
+        .app .city-selector-container .city-selector-body .city-selector-action .city-selector-cancel {
+          left: 0; }
+        .app .city-selector-container .city-selector-body .city-selector-action .city-selector-confirm {
+          right: 0; }
+      .app .city-selector-container .city-selector-body .city-selector-tabs {
+        height: 40px;
+        line-height: 38px;
+        border-bottom: 1px solid #d9d9d9; }
+        .app .city-selector-container .city-selector-body .city-selector-tabs .city-selector-tab {
+          display: inline-block;
+          margin: 0 10px;
+          max-width: 25%;
+          -o-text-overflow: ellipsis;
+             text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          font-size: 14px;
+          color: #333;
+          cursor: pointer;
+          border-bottom: 2px solid transparent; }
+          .app .city-selector-container .city-selector-body .city-selector-tabs .city-selector-tab.active {
+            color: #4caf50;
+            border-bottom: 2px solid #4caf50; }
+      .app .city-selector-container .city-selector-body .city-selector-panels::after, .app .city-selector-container .city-selector-body .city-selector-panels::before {
+        content: "";
+        display: table; }
+      .app .city-selector-container .city-selector-body .city-selector-panels::after {
+        clear: both;
+        zoom: 1; }
+      .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-panel {
+        float: left;
+        width: 50%;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        white-space: nowrap;
+        max-height: 280px;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none; }
+        .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-panel::-webkit-scrollbar {
+          width: 0; }
+        .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a {
+          display: block;
+          padding-left: 15px;
+          font-size: 14px;
+          color: #787878;
+          border-bottom: 1px solid #f5f5f5;
+          cursor: pointer;
+          height: 40px;
+          line-height: 40px; }
+          .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a.active {
+            color: #4caf50;
+            position: relative; }
+            .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-panel > a.active::after {
+              content: "✔";
+              position: absolute;
+              right: 10px;
+              font-size: 20px; }
+      .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-city {
+        background: #f5f5f5; }
+        .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-city > a {
+          border-bottom: 1px solid #e9e9e9; }
+      .app .city-selector-container .city-selector-body .city-selector-panels .city-selector-district {
+        display: none; }
+      .app .city-selector-container .city-selector-body .city-selector-error-tips {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+           -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+             -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        padding: 3px 10px;
+        line-height: 30px;
+        text-align: center;
+        z-index: 9;
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+           -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5); }
+
+@media screen and (max-width: 786px) {
+  body {
+    cursor: pointer; }
+  .app {
+    width: 100%; }
+    .app .city-selector-container .city-selector-body .city-selector-action .city-selector-title {
+      width: 70%; }
+    .app .city-selector-container .city-selector-body .city-selector-action .city-selector-btn {
+      width: 15%; } }

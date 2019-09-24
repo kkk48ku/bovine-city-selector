@@ -49,13 +49,14 @@ gulp.task("jsCompile", () => {
 
 gulp.task("sass", () => {
     return gulp
-        .src("example/*.scss")
+        .src("src/*.scss")
         .pipe(sass().on("error", sass.logError))
         .pipe(postcss(processors))
-        .pipe(gulp.dest("./example"));
+        .pipe(gulp.dest("./src"))
+        .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("main", function() {
     gulp.watch(["./src/*.js"], gulp.series("jsCompile"));
-    gulp.watch(["./example/*.scss"], gulp.series("sass"));
+    gulp.watch(["./src/*.scss"], gulp.series("sass"));
 });

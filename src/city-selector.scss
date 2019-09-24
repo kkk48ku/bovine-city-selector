@@ -16,14 +16,6 @@ $cusColor: #4caf50;
     border-bottom: 1px solid #d9d9d9;
 }
 
-@mixin color {
-    color: #4caf50;
-}
-
-@mixin bgColor {
-    background-color: #4caf50;
-}
-
 * {
     box-sizing: border-box;
     padding: 0;
