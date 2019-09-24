@@ -738,6 +738,9 @@ var citySelector = function () {
                 _this6.fillData();
                 if (_this6.confirm) _this6.confirm(_this6.data);
             });
+            this.els.citySelCancelBtn.addEventListener("click", function () {
+                if (_this6.cancel) _this6.cancel();
+            });
             this.els.citySelInput.addEventListener("click", function () {
                 if (_this6.els.citySelBody.style.display === "block") {
                     _this6.els.citySelBody.style.display = "none";
@@ -749,7 +752,7 @@ var citySelector = function () {
             body.addEventListener("click", function (e) {
                 var item = e.target;
                 for (var ele in _this6.els) {
-                    if (item !== _this6.els[ele] && item !== _this6.els.citySelInput && item.className !== "active" && item.className !== "city-selector-title" && item.className !== "city-selector-tabs") {
+                    if (item !== _this6.els[ele] && item !== _this6.els.citySelInput && item.className !== "active" && item.className !== "city-selector-title" && item.className !== "city-selector-tabs" && item.className !== "city-selector-tab" && item.className !== "city-selector-tab active" && item.className !== "city-selector-panels") {
                         _this6.els.citySelBody.style.display = "none";
                     }
                 }
@@ -823,9 +826,9 @@ var selector = document.querySelector("#city-selector-container");
 
 var city = new _citySelector2.default(selector, {
     defaultData: {
-        province: "广东省",
-        city: "深圳市",
-        district: "南山区"
+        province: "",
+        city: "",
+        district: ""
     },
     actionName: {
         title: "请选择地区",
@@ -848,6 +851,9 @@ city.confirm = function (data) {
         citySelector.value = "";
     }
     console.log(citySelector.value);
+};
+city.cancel = function () {
+    console.log("用户取消了选择位置");
 };
 
 },{"./city-selector":2}]},{},[3]);

@@ -4,9 +4,9 @@ const selector = document.querySelector("#city-selector-container")
 
 const city = new citySelector(selector, {
     defaultData: {
-        province: "广东省",
-        city: "深圳市",
-        district: "南山区"
+        province: "",
+        city: "",
+        district: ""
     },
     actionName: {
         title: "请选择地区",
@@ -29,4 +29,7 @@ city.confirm = (data) => {
         citySelector.value = ``;
     }
     console.log(citySelector.value)
+}
+city.cancel = () => {
+    console.log("用户取消了选择位置")
 }

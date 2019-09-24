@@ -288,6 +288,9 @@ export default class citySelector {
             this.fillData();
             if (this.confirm) this.confirm(this.data);
         })
+        this.els.citySelCancelBtn.addEventListener("click", () => {
+            if (this.cancel) this.cancel();
+        })
         this.els.citySelInput.addEventListener("click", () => {
             if (this.els.citySelBody.style.display === "block") {
                 this.els.citySelBody.style.display = "none";
@@ -303,7 +306,10 @@ export default class citySelector {
                     item !== this.els.citySelInput &&
                     item.className !== "active" &&
                     item.className !== "city-selector-title" &&
-                    item.className !== "city-selector-tabs") {
+                    item.className !== "city-selector-tabs" &&
+                    item.className !== "city-selector-tab" &&
+                    item.className !== "city-selector-tab active" &&
+                    item.className !== "city-selector-panels") {
                     this.els.citySelBody.style.display = "none";
                 }
             }
