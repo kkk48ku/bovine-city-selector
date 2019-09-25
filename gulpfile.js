@@ -13,9 +13,7 @@ const gulp = require("gulp"),
     // 转成stream流，gulp系
     stream = require('vinyl-source-stream'),
     // 转成二进制流，gulp系
-    buffer = require('vinyl-buffer'),
-    // 压缩打包最终的文件
-    uglify = require("gulp-uglify");
+    buffer = require('vinyl-buffer');
 
 const processors = [
     autoprefixer({
@@ -29,14 +27,14 @@ const processors = [
 ];
 
 gulp.task("main", function() {
-    gulp.watch(["./src/*.js"], gulp.series("jsCompile"));
+    gulp.watch(["./example/index.js", "./src/city-selector.js"], gulp.series("jsCompile"));
     gulp.watch(["./src/*.scss"], gulp.series("sass"));
 });
 
 gulp.task("jsCompile", () => {
     // 定义入口文件
     return browserify({
-            entries: 'src/index.js'
+            entries: 'example/index.js'
             // 开启后在打包的文件后有sourceMap(会使打包文件体积较大)
             // debug: true
         })
@@ -65,6 +63,7 @@ gulp.task("sass", () => {
         .pipe(gulp.dest("./dist"));
 });
 
+// 打包生成最终的文件
 gulp.task("build", () => {
     // 定义入口文件
     return browserify({
@@ -76,15 +75,10 @@ gulp.task("build", () => {
         .transform("babelify", { presets: ['es2015'] })
         // 转成node readabel stream流，拥有pipe方法（stream流分小片段传输）
         .bundle()
-        // 关闭后保存报错可以自动重启
-        // .on('error', function (error) {
-        //     console.log(error.toString())
-        // })
         // 转成gulp系的stream流，node系只有content，添加名字
         .pipe(stream('city-selector.js'))
         // 转成二进制的流（二进制方式整体传输）
         .pipe(buffer())
-        .pipe(uglify({ ie8: true, toplevel: true }))
         // 输出
         .pipe(gulp.dest('dist/'))
 })

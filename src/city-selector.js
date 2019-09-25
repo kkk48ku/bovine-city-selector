@@ -1,6 +1,6 @@
 import cityData from "./city-data.json";
 
-export default class citySelector {
+export default class CitySelector {
     constructor(parentEl, {
         defaultData,
         actionName = {
@@ -142,6 +142,7 @@ export default class citySelector {
         parentNode.appendChild(frag);
         const proItems = Array.prototype.slice.call(this.els.citySelPro.querySelectorAll("a"));
         proItems.forEach(item => {
+            // 添加监听事件
             item.addEventListener("click", (e) => {
                 e.preventDefault();
                 if (e.target.getAttribute("data-value") === this.data.province) return;
@@ -180,6 +181,7 @@ export default class citySelector {
         parentNode.appendChild(frag);
         const cityItems = Array.prototype.slice.call(this.els.citySelCity.querySelectorAll("a"));
         cityItems.forEach(item => {
+            // 添加监听事件
             item.addEventListener("click", (e) => {
                 e.preventDefault();
                 console.log()
@@ -222,6 +224,7 @@ export default class citySelector {
         parentNode.appendChild(frag);
         const disItems = Array.prototype.slice.call(this.els.citySelDis.querySelectorAll("a"));
         disItems.forEach(item => {
+            // 添加监听事件
             item.addEventListener("click", (e) => {
                 e.preventDefault();
                 if (e.target.getAttribute("data-value") === this.data.district) return;

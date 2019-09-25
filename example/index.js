@@ -1,14 +1,14 @@
-import citySelector from "./city-selector";
+import CitySelector from "../src/city-selector";
 
 // 无默认值
 const citySelOne = document.getElementsByClassName("city-selector-container")[0];
 
-const cityPickerOne = new citySelector(citySelOne);
+const cityPickerOne = new CitySelector(citySelOne);
 
 // 有默认值
 const citySelTwo = document.getElementsByClassName("city-selector-container")[1];
 
-const cityPickerTwo = new citySelector(citySelTwo, {
+const cityPickerTwo = new CitySelector(citySelTwo, {
     defaultData: {
         province: "广东省",
         city: "深圳市",
@@ -19,7 +19,7 @@ const cityPickerTwo = new citySelector(citySelTwo, {
 // 简易展示地址
 const citySelThree = document.getElementsByClassName("city-selector-container")[2];
 
-const cityPickerThree = new citySelector(citySelThree, {
+const cityPickerThree = new CitySelector(citySelThree, {
     defaultData: {
         province: "广东省",
         city: "深圳市",
@@ -30,7 +30,7 @@ const cityPickerThree = new citySelector(citySelThree, {
 // 简易展示地址
 const citySelFour = document.getElementsByClassName("city-selector-container")[3];
 
-const cityPickerFour = new citySelector(citySelFour, {
+const cityPickerFour = new CitySelector(citySelFour, {
     defaultData: {
         province: "",
         city: "",
@@ -41,7 +41,7 @@ const cityPickerFour = new citySelector(citySelFour, {
 const citySelFive = document.getElementsByClassName("city-selector-container")[4],
     citySelInputFive = document.getElementsByClassName("city-selector-input")[4];
 
-const cityPickerFive = new citySelector(citySelFive, {
+const cityPickerFive = new CitySelector(citySelFive, {
     defaultData: {
         province: "广东省",
         city: "",

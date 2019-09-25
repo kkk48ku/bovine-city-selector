@@ -1,4 +1,85 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+
+var _citySelector = require("../src/city-selector");
+
+var _citySelector2 = _interopRequireDefault(_citySelector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// 无默认值
+var citySelOne = document.getElementsByClassName("city-selector-container")[0];
+
+var cityPickerOne = new _citySelector2.default(citySelOne);
+
+// 有默认值
+var citySelTwo = document.getElementsByClassName("city-selector-container")[1];
+
+var cityPickerTwo = new _citySelector2.default(citySelTwo, {
+    defaultData: {
+        province: "广东省",
+        city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+var citySelThree = document.getElementsByClassName("city-selector-container")[2];
+
+var cityPickerThree = new _citySelector2.default(citySelThree, {
+    defaultData: {
+        province: "广东省",
+        city: "深圳市",
+        district: "南山区"
+    }
+});
+
+// 简易展示地址
+var citySelFour = document.getElementsByClassName("city-selector-container")[3];
+
+var cityPickerFour = new _citySelector2.default(citySelFour, {
+    defaultData: {
+        province: "",
+        city: "",
+        district: ""
+    }
+});
+//自定义其它选项 
+var citySelFive = document.getElementsByClassName("city-selector-container")[4],
+    citySelInputFive = document.getElementsByClassName("city-selector-input")[4];
+
+var cityPickerFive = new _citySelector2.default(citySelFive, {
+    defaultData: {
+        province: "广东省",
+        city: "",
+        district: ""
+    },
+    actionName: {
+        title: "你从哪来?",
+        cancelBtn: "NO",
+        confirmBtn: "OK"
+    },
+    tabs: ["快选", "快选", "快选"],
+    errorTips: {
+        noPro: "愣着干嘛，快选省份啊！",
+        noCity: "愣着干嘛，快选城市啊！",
+        noDis: "愣着干嘛，快选区域啊！"
+    }
+});
+
+cityPickerFive.confirm = function (data) {
+    if (data.province && data.city && data.district) {
+        citySelInputFive.value = data.province + " / " + data.city + " / " + data.district;
+    } else if (data.province && data.city && !data.district) {
+        citySelInputFive.value = data.province + " / " + data.city;
+    } else if (data.province && !data.city && !data.district) {
+        citySelInputFive.value = "" + data.province;
+    } else {
+        citySelInputFive.value = "";
+    }
+};
+
+},{"../src/city-selector":3}],2:[function(require,module,exports){
 module.exports={
     "北京市": {
         "北京市": ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "门头沟区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云区", "延庆区"]
@@ -407,7 +488,7 @@ module.exports={
     }
 }
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -424,8 +505,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var citySelector = function () {
-    function citySelector(parentEl) {
+var CitySelector = function () {
+    function CitySelector(parentEl) {
         var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
             defaultData: {
                 province: "",
@@ -460,7 +541,7 @@ var citySelector = function () {
             noDis: "请选择区域"
         } : _ref$errorTips;
 
-        _classCallCheck(this, citySelector);
+        _classCallCheck(this, CitySelector);
 
         if (!this.getParentEl(parentEl)) return;
         this.cityData = _cityData2.default;
@@ -477,7 +558,7 @@ var citySelector = function () {
         this.init();
     }
 
-    _createClass(citySelector, [{
+    _createClass(CitySelector, [{
         key: "init",
         value: function init() {
             this.renderBody();
@@ -560,6 +641,7 @@ var citySelector = function () {
             parentNode.appendChild(frag);
             var proItems = Array.prototype.slice.call(this.els.citySelPro.querySelectorAll("a"));
             proItems.forEach(function (item) {
+                // 添加监听事件
                 item.addEventListener("click", function (e) {
                     e.preventDefault();
                     if (e.target.getAttribute("data-value") === _this.data.province) return;
@@ -603,6 +685,7 @@ var citySelector = function () {
             parentNode.appendChild(frag);
             var cityItems = Array.prototype.slice.call(this.els.citySelCity.querySelectorAll("a"));
             cityItems.forEach(function (item) {
+                // 添加监听事件
                 item.addEventListener("click", function (e) {
                     e.preventDefault();
                     console.log();
@@ -650,6 +733,7 @@ var citySelector = function () {
             parentNode.appendChild(frag);
             var disItems = Array.prototype.slice.call(this.els.citySelDis.querySelectorAll("a"));
             disItems.forEach(function (item) {
+                // 添加监听事件
                 item.addEventListener("click", function (e) {
                     e.preventDefault();
                     if (e.target.getAttribute("data-value") === _this3.data.district) return;
@@ -854,90 +938,9 @@ var citySelector = function () {
         }
     }]);
 
-    return citySelector;
+    return CitySelector;
 }();
 
-exports.default = citySelector;
+exports.default = CitySelector;
 
-},{"./city-data.json":1}],3:[function(require,module,exports){
-"use strict";
-
-var _citySelector = require("./city-selector");
-
-var _citySelector2 = _interopRequireDefault(_citySelector);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// 无默认值
-var citySelOne = document.getElementsByClassName("city-selector-container")[0];
-
-var cityPickerOne = new _citySelector2.default(citySelOne);
-
-// 有默认值
-var citySelTwo = document.getElementsByClassName("city-selector-container")[1];
-
-var cityPickerTwo = new _citySelector2.default(citySelTwo, {
-    defaultData: {
-        province: "广东省",
-        city: "深圳市",
-        district: "南山区"
-    }
-});
-
-// 简易展示地址
-var citySelThree = document.getElementsByClassName("city-selector-container")[2];
-
-var cityPickerThree = new _citySelector2.default(citySelThree, {
-    defaultData: {
-        province: "广东省",
-        city: "深圳市",
-        district: "南山区"
-    }
-});
-
-// 简易展示地址
-var citySelFour = document.getElementsByClassName("city-selector-container")[3];
-
-var cityPickerFour = new _citySelector2.default(citySelFour, {
-    defaultData: {
-        province: "",
-        city: "",
-        district: ""
-    }
-});
-//自定义其它选项 
-var citySelFive = document.getElementsByClassName("city-selector-container")[4],
-    citySelInputFive = document.getElementsByClassName("city-selector-input")[4];
-
-var cityPickerFive = new _citySelector2.default(citySelFive, {
-    defaultData: {
-        province: "广东省",
-        city: "",
-        district: ""
-    },
-    actionName: {
-        title: "你从哪来?",
-        cancelBtn: "NO",
-        confirmBtn: "OK"
-    },
-    tabs: ["快选", "快选", "快选"],
-    errorTips: {
-        noPro: "愣着干嘛，快选省份啊！",
-        noCity: "愣着干嘛，快选城市啊！",
-        noDis: "愣着干嘛，快选区域啊！"
-    }
-});
-
-cityPickerFive.confirm = function (data) {
-    if (data.province && data.city && data.district) {
-        citySelInputFive.value = data.province + " / " + data.city + " / " + data.district;
-    } else if (data.province && data.city && !data.district) {
-        citySelInputFive.value = data.province + " / " + data.city;
-    } else if (data.province && !data.city && !data.district) {
-        citySelInputFive.value = "" + data.province;
-    } else {
-        citySelInputFive.value = "";
-    }
-};
-
-},{"./city-selector":2}]},{},[3]);
+},{"./city-data.json":2}]},{},[1]);
