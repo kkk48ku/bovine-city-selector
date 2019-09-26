@@ -198,7 +198,6 @@
 @media screen and (max-width: 768px) {
   body {
     -webkit-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
     cursor: pointer;
   }
 
