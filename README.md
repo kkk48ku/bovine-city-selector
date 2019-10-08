@@ -26,7 +26,7 @@ npm install bovine-city-selector --save-dev
 import CitySelector from "bovine-city-selector";
 ```
 
-1. 引入官方css样式
+3. 引入官方css样式
 
 ```html
 <link rel="stylesheet" href="../dist/city-selector.css" />
