@@ -198,6 +198,7 @@ $cusColor: #4caf50;
     body {
         // 解决移动端body无法点击的问题
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .app {
