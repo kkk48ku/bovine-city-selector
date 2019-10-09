@@ -1,6 +1,6 @@
 {
     "name": "bovine-city-selector",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "无依赖的城市选择器",
     "main": "./dist/city-selector.js",
     "directories": {
