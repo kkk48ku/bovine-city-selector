@@ -16,16 +16,25 @@
 npm install bovine-city-selector --save-dev
 ```
 
-2.  import 引入（目前仅支持一种引入方式）
+2.  引入方式
 
 ```
+全局变量：
+window.CitySelector
+```
+```
+commonjs：
+const CitySelector = require("bovine-city-selector")
+```
+```
+es6：
 import CitySelector from "bovine-city-selector";
 ```
 
 3.  引入官方 css 样式
 
 ```html
-<link rel="stylesheet" href="../dist/city-selector.css" />
+<link rel="stylesheet" href="引入路径/bovine-city-selector/dist/city-selector.css" />
 ```
 
 ### 用法
