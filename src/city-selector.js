@@ -9,7 +9,7 @@
 })(this, function() {
 	var A = console.error
 	var CitySelector = function(parentEl, options) {
-		if (!this.getParentEl(parentEl)) return A("The root element must be passed")
+		if (!parentEl || !this.getParentEl(parentEl)) return A("The root element must be passed")
 		this._cityData = {
 			北京市: {
 				北京市: [
@@ -2492,7 +2492,7 @@
 			this.els.citySelPanel[i].scrollTop = this.els.activeEls[i].offsetTop - 160
 		}
 	}
-
+	// 改变切换栏文字为选中的模块
 	CitySelector.prototype.tabChange = function() {
 		this.els.citySelTabs[0].innerHTML = this.data.province || this.tabs[0]
 		this.els.citySelTabs[1].innerHTML = this.data.city || this.tabs[1]
@@ -2595,11 +2595,12 @@
 		})
 		body.addEventListener("click", function(e) {
 			var item = e.target
-			for (var ele in this.els) {
-				if (this.force === "true" && item === this.els.citySelConfirmBtn && !this.data.district) return
+			for (var ele in _this.els) {
+				// 处理强制获取地址的情况
+				if (_this.force === "true" && item === _this.els.citySelConfirmBtn && !_this.data.district) return
 				if (
-					item !== this.els[ele] &&
-					item !== this.els.citySelInput &&
+					item !== _this.els[ele] &&
+					item !== _this.els.citySelInput &&
 					item.className !== "active" &&
 					item.className !== "city-selector-title" &&
 					item.className !== "city-selector-tabs" &&
@@ -2607,7 +2608,7 @@
 					item.className !== "city-selector-tab active" &&
 					item.className !== "city-selector-panels"
 				) {
-					this.els.citySelBody.style.display = "none"
+					_this.els.citySelBody.style.display = "none"
 				}
 			}
 		})
@@ -2641,6 +2642,7 @@
 		ele.innerHTML = ""
 	}
 
+	// 填充获取到的数据
 	CitySelector.prototype.fillData = function() {
 		// 使用深刻拷贝防止获取完整数据被污染
 		var data = JSON.parse(JSON.stringify(this.data))
