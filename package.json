@@ -9,6 +9,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "keywords": ["city-selector", "city-picker", "BovineBoy"],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/BovineBoy/bovine-city-selector.git"
