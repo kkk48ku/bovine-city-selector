@@ -4,7 +4,7 @@
 
 ### 优点
 
-1. 体积小，更轻量（最终打包生成的文件 12KB，再加上依赖的城市 JSON 文件一共 62KB）；
+1. 体积小，更轻量，仅53KB；
 2. 兼容性好，兼容目前市面上所有有兼容必要的浏览器，包括移动端；
 3. 配置项多，更个性化；
 
@@ -94,7 +94,7 @@ html (input 添加自定义属性 data-force="true")
 | :---------: | :----: | :----------------------------------------------------------: | :--------: |
 | defaultData | Object |          province(省份)，city(城市)，district(地区)          |  默认城市  |
 | actionName  | Object | title(选择器名称)，cancelBtn(取消按钮)，confirmBtn(确认按钮) | 自定义信息 |
-|    tabs     | Array  |                       [](tabs三个标签)                       | tab 栏标签 |
+|    tabs     | Array  |                       [] (tabs三个标签)                       | tab 栏标签 |
 |  errorTips  | Object |      noPro(未选省份)，noCity(未选城市)，noDis(未选区域)      |  错误提示  |
 
 ### API：

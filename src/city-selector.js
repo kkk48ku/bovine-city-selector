@@ -8,6 +8,11 @@
 	}
 })(this, function() {
 	var A = console.error
+	/**
+	 * 初始化私有选择器和自定义选项
+	 * @param {string} parentEl The parentNode of input[data-type="city-selector"]
+	 * @param {object} options custom options
+	 */
 	var CitySelector = function(parentEl, options) {
 		if (!parentEl || !this.getParentEl(parentEl)) return A("The root element must be passed")
 		this._cityData = {
@@ -2348,7 +2353,7 @@
 	}
 
 	CitySelector.prototype.inputInit = function() {
-		if (!this.els.citySelInput) return console.error("未获取到城市选择器，可能是没有定义城市选择器的data-type属性")
+		if (!this.els.citySelInput) return A("input must be given a prop 'data-type'")
 		// 防止双击文字被选中
 		this.parentEl.setAttribute("onselectstart", "return false")
 		// 防止直接输入
@@ -2501,11 +2506,11 @@
 
 	CitySelector.prototype.bindTabEvent = function() {
 		var _this = this
-		this.els.citySelTabs[0].addEventListener("click", function(e) {
+		this.els.citySelTabs[0].addEventListener("click", function() {
 			_this.currentIndex = 0
 			_this.activeTab()
 		})
-		this.els.citySelTabs[1].addEventListener("click", function(e) {
+		this.els.citySelTabs[1].addEventListener("click", function() {
 			if (!_this.data.province) {
 				_this.showErrorModel()
 			} else {
@@ -2513,7 +2518,7 @@
 				_this.activeTab()
 			}
 		})
-		this.els.citySelTabs[2].addEventListener("click", function(e) {
+		this.els.citySelTabs[2].addEventListener("click", function() {
 			if (!_this.data.city) {
 				_this.showErrorModel()
 			} else {
@@ -2614,9 +2619,12 @@
 		})
 	}
 
-	// 创建元素
+	/**	
+	 * 创建元素
+	 * @param {Array} classList 
+	 */
 	CitySelector.prototype._createEle = function(classList) {
-		if (!(classList instanceof Array)) return console.error("创建元素必须传入class数组")
+		if (!(classList instanceof Array)) return A("classList must be an Array")
 		var htmlNode = document.createElement("div"),
 			i,
 			length = classList.length
@@ -2626,10 +2634,13 @@
 		return htmlNode
 	}
 
-	// 获取父元素
+	/**	
+	 * 获取父元素
+	 * @param {string} parentEl
+	 */
 	CitySelector.prototype.getParentEl = function(parentEl) {
 		if (parentEl.length && parentEl.length > 1) {
-			console.error("传入的选择器应该是个唯一值")
+			A('ParentEl must be a Symbol string');
 			return false
 		} else {
 			this.parentEl = parentEl instanceof Node ? parentEl : document.querySelector(parentEl)
@@ -2637,7 +2648,10 @@
 		}
 	}
 
-	// 删除元素下素所有子节点
+	/**
+	 * 删除元素下所有子节点
+	 * @param {element} ele 
+	 */
 	CitySelector.prototype._delAllNodes = function(ele) {
 		ele.innerHTML = ""
 	}
