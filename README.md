@@ -13,7 +13,7 @@
 1.  npm 安装：
 
 ```
-npm install bovine-city-selector --save-dev
+npm install bovine-city-selector --save
 ```
 
 2.  引入方式
